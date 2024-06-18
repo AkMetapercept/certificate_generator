@@ -1,0 +1,128 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .login-container {
+    display: flex;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  .login-form {
+    padding: 40px;
+    flex: 1;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  .login-form .colorlib {
+    color: #00c689;
+  }
+  
+ .login-form .orr{
+  position: relative;
+  left: 188px;
+  top: 20px;
+ }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+
+  
+  .remember-me input {
+    margin-right: 10px;
+  }
+  
+  
+  button {
+    background: #00c689;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  button:hover {
+    background: #00a76a;
+  }
+  
+  .social-login {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .social-icons a:nth-child(1) {
+    background: #3b5998;
+  }
+  
+  .social-icons a:nth-child(2) {
+    background: #1da1f2;
+  }
+  
+  .social-icons a:nth-child(3) {
+    background: #db4437;
+  }
+  
+  .login-image {
+    flex: 1;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-image img {
+    max-width: 80%;
+  }
+  
+  .error-message{
+    position: relative;
+    top: 10px;
+    left: 230px;
+    color: red;
+  }
