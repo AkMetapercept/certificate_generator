@@ -10,7 +10,7 @@ const Header = () => {
           <ul className="App-nav-list">
             <li><a href="/home1">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
           </ul>
         </nav>
       </header>

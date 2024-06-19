@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CertificateContext } from "./CertificateContext";
 import "../Style/Dashboard.css";
 
@@ -22,11 +22,11 @@ const Dashboard = () => {
         Certificates Generated Up To Date: {totalCertificates}
       </div>
     </div>
-    {/* <div class="link-container">
-      <Link to="/home1" className="submit1">
+    <div class="link-container">
+      <Link to="/home1" className="submit11">
         Want To Generate Certificate
       </Link>
-    </div> */}
+    </div>
     <div class="table-container">
       <table class="table">
         <thead>

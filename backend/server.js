@@ -1,14 +1,14 @@
 const express = require("express");
 const User = require("./model/userDetail");
-const mongoose = require("mongoose");
+const Db=require("./db")
 const cors = require("cors");
-
+const dotenv=require("dotenv")
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://akshayrp:root@planb.ybnv3iv.mongodb.net/");
+dotenv.config();
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -35,6 +35,11 @@ app.post('/register', (req, res) => {
         .catch(err => res.status(500).json({ status: "error", message: err.message }));
 });
 
-app.listen(3001, () => {
-    console.log("server started on port", 3001);
+
+const port=process.env.PORT ||'3000'
+
+app.listen(port, () => {
+    console.log("server started on port",port);
 });
+
+Db();

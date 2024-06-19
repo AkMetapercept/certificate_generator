@@ -15,7 +15,7 @@ body {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin-top: 0;
+    /* margin-top: 0; */
   }
 
   .header {
@@ -38,18 +38,16 @@ body {
     margin-bottom: 20px;
   }
 
-  .submit1 {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
 
-  .submit1:hover {
-    background-color: #0056b3;
+  .link-container   .submit11{
+    background-color: #00c689;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 8px;
+    width: 247px;
+    text-decoration: none;
   }
 
   .table-container {

@@ -13,7 +13,7 @@ import { CertificateContext } from "./CertificateContext";
 
 import "../Style/Home1.css";
 import Header from "./Header";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 
 const templates = [
   {
@@ -72,27 +72,27 @@ const Home1 = () => {
 
   const generatePDF = () => {
     const input = certificateRef.current;
-    html2canvas(input, { scale: 5, useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png", 1.0);
+    const scale = 3; // Adjust the scale factor for higher resolution
+    html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png', 1.0);
       const pdf = new jsPDF({
-        orientation: "landscape",
-        unit: "px",
-        format: [700, 500],
+        orientation: 'landscape',
+        unit: 'px',
+        format: [canvas.width / scale, canvas.height / scale], // Dynamic format based on canvas size
       });
-      pdf.addImage(imgData, "PNG", 0, 0, 700, 500);
-      pdf.save("certificate.pdf");
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / scale, canvas.height / scale);
+      pdf.save('certificate.pdf');
       addCertificate(recipient);
     });
   };
-
-  // const certificateRef = useRef(null);
-
+  
   const downloadImage = () => {
     const input = certificateRef.current;
-    html2canvas(input, { scale: 5, useCORS: true }).then((canvas) => {
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png", 1.0);
-      link.download = "certificate.png";
+    const scale = 3; // Adjust the scale factor for higher resolution
+    html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.download = 'certificate.png';
       link.click();
       addCertificate(recipient);
     });
@@ -204,7 +204,7 @@ const Home1 = () => {
           </div>
         </div>
       </div>
-      <Dashboard/>
+      {/* <Dashboard/> */}
     </>
   );
 };
