@@ -14,7 +14,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/register', { name, email, password });
+      const response = await axios.post('https://certificate-generator-xbiy.onrender.com/register', { name, email, password });
       console.log('Response:', response);
 
       if (response.data && response.data.status === "success") {

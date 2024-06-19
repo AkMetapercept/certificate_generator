@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/login', { email, password });
+      const response = await axios.post('https://certificate-generator-xbiy.onrender.com/login', { email, password });
       console.log('Response:', response);
 
       if (response.data && response.data.status === "success") {
@@ -24,10 +24,18 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error during Login:", error);
-      setErrorMessage("An error occurred during Login. Please try again.");
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        setErrorMessage(`Login failed: ${error.response.data.message || error.message}`);
+      } else if (error.request) {
+        // Request was made but no response received
+        setErrorMessage("No response from the server. Please try again later.");
+      } else {
+        // Something else caused the error
+        setErrorMessage("An error occurred during Login. Please try again.");
+      }
     }
   };
-
 
   return (
     <div className="App">
