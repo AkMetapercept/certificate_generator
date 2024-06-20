@@ -22,12 +22,11 @@
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "./node_modules/.bin/netlify-lambda serve src",
+  "build": "react-scripts build"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
