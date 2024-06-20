@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../images/certigen-logo.PNG";
+import logo from "../images/logo.svg";
 import '../Style/Header.css';
 
 const Header = () => {

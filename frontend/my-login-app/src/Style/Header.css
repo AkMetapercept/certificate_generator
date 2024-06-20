@@ -5,22 +5,21 @@
     padding: 10px 20px;
     background-color: #282c34;
     color: white;
+    width: 100%;
   }
   
   .App-logo {
     height: 40px;
   }
   
-  .App-nav {
-    flex-grow: 1;
-  }
+
   
   .App-nav-list {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: flex-end;
+    justify-content: space-evenly;
   }
   
   .App-nav-list li {
@@ -28,13 +27,13 @@
   }
   
   .App-nav-list a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 1rem;
   }
   
   /* Optional: Adjust font size and spacing for smaller screens */
-  @media (max-width: 768px) {
+  @media (max-width: 400px) {
     .App-nav-list a {
       font-size: 0.9rem;
     }
@@ -44,11 +43,14 @@
     }
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 390px) {
     .App-nav-list a {
       font-size: 0.8rem;
     }
-  
+    .App-logo {
+      height: 40px;
+      width: 100px;
+    }
     .App-nav-list li {
       margin: 0 3px;
     }

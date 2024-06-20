@@ -13,19 +13,6 @@ body {
   min-height: 100vh;
 }
 
-.certi-app .App-header {
-  width: 100%;
-  height: 60px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.certi-app .App-logo {
-  height: 50px;
-}
 
 .section{
   margin-top: 50px;
@@ -128,8 +115,9 @@ body {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
+  font-size: 50px;
   color: #ab933c;
+  font-family: "Dancing Script", cursive;
 }
 
 .template1 p {
@@ -160,8 +148,9 @@ body {
   top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
+  font-size: 50px;
   color: #dfc15c;
+  font-family: "Dancing Script", cursive;
 }
 
 .template2 p {
@@ -196,8 +185,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
+  font-size: 50px;
   color: #835d35;
+  font-family: "Dancing Script", cursive;
 }
 
 .template3 p {
@@ -232,8 +222,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
-  color: #5b5b6b;
+  font-size: 50px;
+  color: #5b5b6b;font-family: "Dancing Script", cursive;
 }
 
 .template4 p {
@@ -268,8 +258,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
-  color: #6a272d;
+  font-size: 50px;
+  color: #6a272d;font-family: "Dancing Script", cursive;
 }
 
 .template5 p {
@@ -304,8 +294,8 @@ body {
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
-  color: #000;
+  font-size: 50px;
+  color: #000;font-family: "Dancing Script", cursive;
 }
 
 .template6 p {
@@ -340,8 +330,8 @@ body {
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 29px;
-  color: #ba8830;
+  font-size: 50px;
+  color: #ba8830;font-family: "Dancing Script", cursive;
 }
 
 .template7 p {

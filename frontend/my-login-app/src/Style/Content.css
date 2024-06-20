@@ -1,0 +1,16 @@
+.main-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+
+.certificate-preview {
+    margin-top: 2rem;
+}
+
+.certificate-preview img {
+    max-width: 600px;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

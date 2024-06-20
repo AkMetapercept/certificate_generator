@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Style/Login.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import img from "./Login-img.svg";
+import img from "../images/Login-img.svg";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -16,7 +16,7 @@ const Login = () => {
       console.log('Response:', response);
 
       if (response.data && response.data.status === "success") {
-        navigate("/home1");
+        navigate("/landingpage");
       } else {
         const message = response.data.message || "Login failed !!!";
         setErrorMessage(message);

@@ -7,9 +7,10 @@ import Signup from './components/Signup';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CertificateProvider } from './components/CertificateContext';
 import Login from './components/Login';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Dashboard from './components/Dashboard';
-import Home1 from './components/Home1';
+// import Home1 from './components/Home1';
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
         <Routes>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/' element={<Login/>}></Route>
-          <Route path='/home' element={<Home/>}></Route>
-          <Route path='/home1' element={<Home1/>}></Route>
+          {/* <Route path='/home' element={<Home/>}></Route> */}
+          <Route path='/landingpage' element={<LandingPage/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}></Route>
 
 

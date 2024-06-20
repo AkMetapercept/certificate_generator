@@ -100,7 +100,7 @@ const Home = () => {
   return (
     <div>
       <div className="certi-app">
-        <header className="App-header">
+        <header className="App-headers">
           <div>
             <img src={logo} className="App-logo" alt="logo" />
           </div>

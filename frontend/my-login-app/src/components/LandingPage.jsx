@@ -11,8 +11,10 @@ import template6 from "../images/certi6.jpg";
 import template7 from "../images/certi7.jpg";
 import { CertificateContext } from "./CertificateContext";
 
-import "../Style/Home1.css";
+import "../Style/LandingPage.css";
 import Header from "./Header";
+// import MainContent from "./MainContent";
+import { useNavigate } from "react-router-dom";
 // import Dashboard from "./Dashboard";
 
 const templates = [
@@ -61,7 +63,7 @@ const templates = [
   },
 ];
 
-const Home1 = () => {
+const LandingPage = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
   const [recipient, setRecipient] = useState("");
   const [date, setDate] = useState("");
@@ -69,46 +71,94 @@ const Home1 = () => {
   const [signature, setSignature] = useState("");
   const { addCertificate } = useContext(CertificateContext);
   const certificateRef = useRef(null);
-
+  const navigate = useNavigate();
   const generatePDF = () => {
     const input = certificateRef.current;
-    const scale = 3; // Adjust the scale factor for higher resolution
+    const scale = 5; // Adjust the scale factor for higher resolution
     html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png', 1.0);
+      const imgData = canvas.toDataURL("image/png", 1.0);
       const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'px',
+        orientation: "landscape",
+        unit: "px",
         format: [canvas.width / scale, canvas.height / scale], // Dynamic format based on canvas size
       });
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / scale, canvas.height / scale);
-      pdf.save('certificate.pdf');
+      pdf.addImage(
+        imgData,
+        "PNG",
+        0,
+        0,
+        canvas.width / scale,
+        canvas.height / scale
+      );
+      pdf.save("certificate.pdf");
       addCertificate(recipient);
+      navigate("/dashboard");
     });
   };
-  
-  const downloadImage = () => {
-    const input = certificateRef.current;
-    const scale = 3; // Adjust the scale factor for higher resolution
-    html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png', 1.0);
-      link.download = 'certificate.png';
-      link.click();
-      addCertificate(recipient);
-    });
+
+  // const downloadImage = () => {
+  //   const input = certificateRef.current;
+  //   const scale = 5; // Adjust the scale factor for higher resolution
+  //   html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
+  //     const link = document.createElement("a");
+  //     link.href = canvas.toDataURL("image/png", 1.0);
+  //     link.download = "certificate.png";
+  //     link.click();
+  //     addCertificate(recipient);
+  //   });
+  // };
+
+  // const downloadImage = async () => {
+  //   try {
+  //     const selectedTemplateObj = templates.find(
+  //       (template) => template.id === selectedTemplate.id
+  //     );
+
+  //     const response = await fetch(selectedTemplateObj.src);
+
+  //     const blob = await response.blob();
+
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = "certificate.jpg";
+
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     addCertificate(recipient);
+
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.error("Error downloading the image", error);
+  //   }
+  // };
+
+  const downloadImage = async () => {
+    try {
+      const certificates = document.querySelector(".certificates");
+
+      const canvas = await html2canvas(certificates, { scale: 5 });
+
+      canvas.toBlob((blob) => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "certificate_image.jpg";
+
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+      }, "image/jpeg");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error generating the certificate image", error);
+    }
   };
 
   return (
     <>
       <div className="certi-app">
         <Header />
-        <section className="section ">
-          <div className="elementor-container elementor-column-gap-extended">
-            <div className="elementor-widget-container">
-              <h1>Free Online Certificate Maker</h1>
-            </div>
-          </div>
-        </section>
+        {/* <MainContent /> */}
         <div className="app-content">
           <h2>Step 1. Select a certificate template</h2>
           <div className="step-desc">
@@ -204,9 +254,8 @@ const Home1 = () => {
           </div>
         </div>
       </div>
-      {/* <Dashboard/> */}
     </>
   );
 };
 
-export default Home1;
+export default LandingPage;
