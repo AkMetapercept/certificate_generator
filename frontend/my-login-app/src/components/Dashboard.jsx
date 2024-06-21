@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CertificateContext } from "./CertificateContext";
 import "../Style/Dashboard.css";
+import Header from "./Header";
+import Footer from "./Footer";
 
 
 const Dashboard = () => {
@@ -15,7 +17,9 @@ const Dashboard = () => {
     //   };
 
   return (
-    <div class="container">
+    <div className="dashboard">
+    <Header/>
+      <div class="container">
     <div class="header">
       <div className="text1">Certificate Generated List</div>
       <div className="text2">
@@ -57,6 +61,9 @@ const Dashboard = () => {
       </table>
     </div>
   </div>
+        
+  <div style={{position:"relative", top:"333px"}}><Footer/></div>
+    </div>
   );
 };
 

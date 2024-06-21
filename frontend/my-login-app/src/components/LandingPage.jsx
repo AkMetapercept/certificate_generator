@@ -15,6 +15,7 @@ import "../Style/LandingPage.css";
 import Header from "./Header";
 // import MainContent from "./MainContent";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 // import Dashboard from "./Dashboard";
 
 const templates = [
@@ -74,13 +75,13 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const generatePDF = () => {
     const input = certificateRef.current;
-    const scale = 5; // Adjust the scale factor for higher resolution
+    const scale = 5;
     html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png", 1.0);
       const pdf = new jsPDF({
         orientation: "landscape",
         unit: "px",
-        format: [canvas.width / scale, canvas.height / scale], // Dynamic format based on canvas size
+        format: [canvas.width / scale, canvas.height / scale],
       });
       pdf.addImage(
         imgData,
@@ -90,9 +91,21 @@ const LandingPage = () => {
         canvas.width / scale,
         canvas.height / scale
       );
-      pdf.save("certificate.pdf");
+
+      const pdfBlob = pdf.output("blob");
+      const blobUrl = URL.createObjectURL(pdfBlob);
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = "certificate.pdf";
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.open(blobUrl, "_blank");
+
       addCertificate(recipient);
-      navigate("/dashboard");
     });
   };
 
@@ -139,16 +152,21 @@ const LandingPage = () => {
       const canvas = await html2canvas(certificates, { scale: 5 });
 
       canvas.toBlob((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+
         const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
+        link.href = blobUrl;
         link.download = "certificate_image.jpg";
 
         document.body.appendChild(link);
         link.click();
-
         document.body.removeChild(link);
+
+        window.open(blobUrl, "_blank");
       }, "image/jpeg");
-      navigate("/dashboard");
+
+      addCertificate(recipient);
+      // navigate("/dashboard");
     } catch (error) {
       console.error("Error generating the certificate image", error);
     }
@@ -254,6 +272,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

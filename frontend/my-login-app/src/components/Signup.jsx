@@ -74,7 +74,7 @@ const Signup = () => {
             <button type="submit">Sign Up</button>
           </form>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {/* <div className="social-login">
+          <div className="social-login">
             <div className="social-icons">
               <a href="/">
                 <i className="fab fa-facebook-f"></i>
@@ -86,7 +86,7 @@ const Signup = () => {
                 <i className="fab fa-google"></i>
               </a>
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="login-image">
           <img src={img} alt="Login Illustration" />

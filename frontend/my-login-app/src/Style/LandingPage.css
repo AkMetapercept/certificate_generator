@@ -23,6 +23,8 @@ body {
   padding: 20px;
   max-width: 800px;
   margin: 55px auto;
+  background-color: darkgray;
+  border-radius: 30px;
 }
 
 .app-content .info {
