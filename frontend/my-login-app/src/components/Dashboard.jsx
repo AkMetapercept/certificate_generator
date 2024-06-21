@@ -23,7 +23,7 @@ const Dashboard = () => {
       </div>
     </div>
     <div class="link-container">
-      <Link to="/home1" className="submit11">
+      <Link to="/landingpage" className="submit11">
         Want To Generate Certificate
       </Link>
     </div>

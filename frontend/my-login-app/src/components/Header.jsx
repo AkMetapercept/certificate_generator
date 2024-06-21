@@ -8,7 +8,7 @@ const Header = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <nav className="App-nav">
           <ul className="App-nav-list">
-            <li><a href="/home1">Home</a></li>
+            <li><a href="/langingpage">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
           </ul>
