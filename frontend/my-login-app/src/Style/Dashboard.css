@@ -7,6 +7,32 @@ body {
     color: #333;
   }
   
+  .landing-page {
+    font-family: 'Arial, sans-serif';
+    color: #333;
+  }
+  
+  .headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4d4a1;
+    padding: 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+
+
   .container {
     width: 90%;
     max-width: 1200px;
@@ -15,12 +41,14 @@ body {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    /* margin-top: 0; */
+   margin-bottom: 118px;
   }
 
   .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    background: #d4d4a1;
+
   }
 
   .header .text1 {

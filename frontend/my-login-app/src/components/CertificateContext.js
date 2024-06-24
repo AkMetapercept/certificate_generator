@@ -1,34 +1,45 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
 
 export const CertificateContext = createContext();
 
 export const CertificateProvider = ({ children }) => {
-  const [certificates, setCertificates] = useState(() => {
-    const savedCertificates = localStorage.getItem('certificates');
-    return savedCertificates ? JSON.parse(savedCertificates) : [];
-  });
-
+  const [certificates, setCertificates] = useState([]);
   useEffect(() => {
-    localStorage.setItem('certificates', JSON.stringify(certificates));
-  }, [certificates]);
+    fetchRecipients();
+  }, []);
 
-  const addCertificate = (name) => {
-    setCertificates([...certificates, { id: certificates.length + 1, name }]);
+  const fetchRecipients = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/getCertificateData");
+      const user = await response.json();
+      setCertificates(user);
+    } catch (error) {
+      console.error("Error fetching recipients:", error);
+    }
   };
 
-  const removeCertificate = (id) => {
-    const updatedCertificates = certificates.filter((certificate) => certificate.id !== id);
-    setCertificates(updatedCertificates);
+  const addCertificate = async (name) => {
+    try {
+      const response = await fetch("http://localhost:3001/addCertificateData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
+      });
+      if (response.ok) {
+        await fetchRecipients();
+      }
+    } catch (error) {
+      console.error("Error adding recipient:", error);
+    }
   };
-
 
   return (
     <CertificateContext.Provider
       value={{
         certificates,
         addCertificate,
-        removeCertificate,
-        totalCertificates: certificates.length, // Total count of certificates
       }}
     >
       {children}

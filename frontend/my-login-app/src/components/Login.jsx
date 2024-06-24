@@ -16,7 +16,7 @@ const Login = () => {
       console.log('Response:', response);
 
       if (response.data && response.data.status === "success") {
-        navigate("/landingpage");
+        navigate("/home");
       } else {
         const message = response.data.message || "Login failed !!!";
         setErrorMessage(message);

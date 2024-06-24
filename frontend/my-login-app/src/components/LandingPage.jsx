@@ -14,7 +14,7 @@ import { CertificateContext } from "./CertificateContext";
 import "../Style/LandingPage.css";
 import Header from "./Header";
 // import MainContent from "./MainContent";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 // import Dashboard from "./Dashboard";
 
@@ -72,7 +72,7 @@ const LandingPage = () => {
   const [signature, setSignature] = useState("");
   const { addCertificate } = useContext(CertificateContext);
   const certificateRef = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const generatePDF = () => {
     const input = certificateRef.current;
     const scale = 5;
@@ -109,42 +109,6 @@ const LandingPage = () => {
     });
   };
 
-  // const downloadImage = () => {
-  //   const input = certificateRef.current;
-  //   const scale = 5; // Adjust the scale factor for higher resolution
-  //   html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
-  //     const link = document.createElement("a");
-  //     link.href = canvas.toDataURL("image/png", 1.0);
-  //     link.download = "certificate.png";
-  //     link.click();
-  //     addCertificate(recipient);
-  //   });
-  // };
-
-  // const downloadImage = async () => {
-  //   try {
-  //     const selectedTemplateObj = templates.find(
-  //       (template) => template.id === selectedTemplate.id
-  //     );
-
-  //     const response = await fetch(selectedTemplateObj.src);
-
-  //     const blob = await response.blob();
-
-  //     const link = document.createElement("a");
-  //     link.href = URL.createObjectURL(blob);
-  //     link.download = "certificate.jpg";
-
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     addCertificate(recipient);
-
-  //     document.body.removeChild(link);
-  //   } catch (error) {
-  //     console.error("Error downloading the image", error);
-  //   }
-  // };
-
   const downloadImage = async () => {
     try {
       const certificates = document.querySelector(".certificates");
@@ -171,6 +135,42 @@ const LandingPage = () => {
       console.error("Error generating the certificate image", error);
     }
   };
+
+    // const downloadImage = () => {
+  //   const input = certificateRef.current;
+  //   const scale = 5; // Adjust the scale factor for higher resolution
+  //   html2canvas(input, { scale: scale, useCORS: true }).then((canvas) => {
+  //     const link = document.createElement("a");
+  //     link.href = canvas.toDataURL("image/png", 1.0);
+  //     link.download = "certificate.png";
+  //     link.click();
+  //     addCertificate(recipient);
+  //   });
+  // };
+
+    // const downloadImage = async () => {
+  //   try {
+  //     const selectedTemplateObj = templates.find(
+  //       (template) => template.id === selectedTemplate.id
+  //     );
+
+  //     const response = await fetch(selectedTemplateObj.src);
+
+  //     const blob = await response.blob();
+
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = "certificate.jpg";
+
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     addCertificate(recipient);
+
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.error("Error downloading the image", error);
+  //   }
+  // };
 
   return (
     <>

@@ -1,214 +1,53 @@
-import React, { useState, useRef, useContext } from "react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import React from "react";
 
-// import styled from 'styled-components';
+import logo from "../images/logo.svg";
 import "../Style/certificate.css";
-import logo from "../images/certigen-logo.PNG";
-import template1 from "../images/certi1.jpg";
-import template2 from "../images/certi2.jpg";
-import template3 from "../images/certi3.jpg";
-import template4 from "../images/certi4.jpg";
-import template5 from "../images/certi5.jpg";
-import template6 from "../images/certi6.jpg";
-import template7 from "../images/certi7.jpg";
-import { CertificateContext } from "./CertificateContext";
-
-const templates = [
-  {
-    id: 1,
-    src: template1,
-    alt: "Template 1",
-    className: "template1",
-  },
-  {
-    id: 2,
-    src: template2,
-    alt: "Template 2",
-    className: "template2",
-  },
-  {
-    id: 3,
-    src: template3,
-    alt: "Template 3",
-    className: "template3",
-  },
-  {
-    id: 4,
-    src: template4,
-    alt: "Template 4",
-    className: "template4",
-  },
-
-  {
-    id: 5,
-    src: template5,
-    alt: "Template 5",
-    className: "template5",
-  },
-  {
-    id: 6,
-    src: template6,
-    alt: "Template 6",
-    className: "template6",
-  },
-  {
-    id: 7,
-    src: template7,
-    alt: "Template 7",
-    className: "template7",
-  },
-];
+import template from "../images/certificate111.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
-  const [recipient, setRecipient] = useState("");
-  const [date, setDate] = useState("");
-  const [description, setDescription] = useState("");
-  const [trainer, setTrainer] = useState("");
-  const { addCertificate } = useContext(CertificateContext);
-  const certificateRef = useRef(null);
-
-  const generatePDF = () => {
-    const input = certificateRef.current;
-    html2canvas(input, { scale: 5, useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png", 1.0);
-      const pdf = new jsPDF({
-        orientation: "landscape",
-        unit: "px",
-        format: [700, 500],
-      });
-      pdf.addImage(imgData, "PNG", 0, 0, 700, 500);
-      pdf.save("certificate.pdf");
-      addCertificate(recipient);
-    });
-  };
-
-  // const certificateRef = useRef(null);
-
-  const downloadImage = () => {
-    const input = certificateRef.current;
-    html2canvas(input, { scale: 5, useCORS: true }).then((canvas) => {
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png", 1.0);
-      link.download = "certificate.png";
-      link.click();
-      addCertificate(recipient);
-    });
-  };
-
   return (
-    <div>
-      <div className="certi-app">
-        <header className="App-headers">
-          <div>
-            <img src={logo} className="App-logo" alt="logo" />
-          </div>
-        </header>
-
-        <div className="Apps">
-          <section className="section ">
-            <div className="elementor-container elementor-column-gap-extended">
-              <div className="elementor-widget-container">
-                <h1>Free Online Certificate Maker</h1>
-              </div>
-            </div>
-          </section>
-
-          <div className="app-content">
-            <h2>Step 1. Select a certificate template</h2>
-            <div className="step-desc">
-              Our online tool offers a wide range of templates to use as a base
-              for designing your certificate. You can edit the details and print
-              it out to certify success for achievement or event. Choose from a
-              wide range of templates that suit your purpose.
-            </div>
-            <div className="templateses">
-              {templates.map((template) => (
-                <img
-                  key={template.id}
-                  src={template.src}
-                  alt={template.alt}
-                  className={
-                    selectedTemplate.id === template.id ? "selected" : ""
-                  }
-                  onClick={() => setSelectedTemplate(template)}
-                />
-              ))}
-            </div>
-            <h2>Step 2. Enter personalized information</h2>
-            <form className="form-content">
-              <div className="mb-3">
-                <label htmlFor="recipientInput" className="form-label">
-                  Recipient
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="recipientInput"
-                  value={recipient}
-                  onChange={(e) => setRecipient(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="dateInput" className="form-label">
-                  Date
-                </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="dateInput"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                />
-              </div>
-              <div className="mb-3 description">
-                <label htmlFor="descriptionInput" className="form-label">
-                  Description
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="descriptionInput"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="trainerInput" className="form-label">
-                  Signature
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="trainerInput"
-                  value={trainer}
-                  onChange={(e) => setTrainer(e.target.value)}
-                />
-              </div>
-            </form>
-            <div className="certificate-preview">
-              <h1>Certificate Preview</h1>
-              <div
-                className={`certificates ${selectedTemplate.className}`}
-                style={{ backgroundImage: `url(${selectedTemplate.src})` }}
-                ref={certificateRef}
-              >
-                <h3>{recipient}</h3>
-                <p>{description}</p>
-                <h6>{date}</h6>
-                <h5>{trainer}</h5>
-              </div>
-            </div>
+    <div className="landing-page">
+      <header className="headers">
+      <img src={logo} className="App-logo" alt="logo" />
+        <nav className="nav">
+          <a href="/home">Home</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/home">About</a>
+          <a href="/home">Contact</a>
+        </nav>
+      </header>
+      <section className="service">
+        <h1>Reliable Service</h1>
+        <p>
+          Experience top-notch certificate generation services at Certificate
+          Generator. Serving India since 2016, we prioritize
+          transparency, professionalism, and precision.
+        </p>
+        <img src={template} alt="Service" className="service-image" />
+        <Link style={{textDecoration:"none", borderRadius:"5px", marginTop:"85px"}} to={"/landingpage"} className="service-button">Generate Certificate</Link>
+      </section>
+      <section className="mission">
+        <h1>Our Mission</h1>
+        <p>
+          At Certificate Generator, our mission is clear - to provide
+          exceptional certificate generation services to the residents of India. Whether it's a simple or complex certificate, our team of
+          experts will ensure accurate results and prompt delivery. We believe
+          in transparency and offer premium quality work at competitive prices.
+        </p>
+        {/* <img src="/LandingPage2.PNG" alt="Mission" className="mission-image" /> */}
+      </section>
+      <footer className="footer">
+        <div className="footer-content">
+        <img src={logo} className="App-logo" alt="logo" />
+          <div className="contact">
+            <p>123-456-7890</p>
+            <a href="info@metapercept.com" style={{textDecoration:"none", color:"#333333"}}>info@metapercept.com</a>
+            <p> Copyright © 2024 Metapercept Technology Services LLP All Rights
+            Reserved</p>
           </div>
         </div>
-        <button className="submit4" onClick={generatePDF}>
-          Generate PDF
-        </button>
-        <button className="submit2" onClick={downloadImage}>
-          Generate Image
-        </button>
-      </div>
+      </footer>
     </div>
   );
 };

@@ -1,80 +1,57 @@
-
-
-
-
-  /* Basic reset */
+/* Basic reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Styling for the social container */
-  .social {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: black;
-  }
-  
-  .social-icons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-  }
-  
-  .social-icons a {
-    text-decoration: none;
-    color: white;
-    font-size: 24px;
-    transition: color 0.3s ease;
-  }
-  .social .social-icons a:nth-child(1) {
-    background: #3b5998;
-  }
-  
-  .social .social-icons a:nth-child(2) {
-    background: #1da1f2;
-  }
-  
-  .social .social-icons a:nth-child(3) {
-    background: #db4437;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  background-color: #d4d4a1;
+  padding: 20px;
+}
+
+.footer-content {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact p,
+.contact a {
+  margin: 5px 0;
+  color: #333333;
+}
+
+.App-logo {
+  height: 40px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 576px) {
+  .footer-content {
+    padding: 10px;
   }
 
-  .copyright {
-    font-size: 14px;
-    color: white;
-    text-align: center;
-    max-width: 90%;
+  .contact p,
+  .contact a {
+    font-size: 0.9rem;
   }
-  
-  @media (min-width: 576px) {
-    .social {
-      padding: 20px 40px;
-    }
-  
-    .copyright {
-      font-size: 16px;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .social {
-      padding: 20px 60px;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .social {
-      padding: 20px 80px;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .social {
-      padding: 20px 100px;
-    }
-  }
-  
+}
+
+/* Styling for the social container */
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #d4d4a1;
+  height: 164px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}

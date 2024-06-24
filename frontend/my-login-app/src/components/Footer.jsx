@@ -1,26 +1,27 @@
 import React from "react";
 import "../Style/Footer.css";
+import logo from "../images/logo.svg";
 const Footer = () => {
   return (
-    <div>
-      <div className="social">
-        <div className="social-icons">
-          <a href="/">
-            <i className="fab fa-facebook-f"></i>
+    <footer className="footer">
+      <div className="footer-content">
+        <img src={logo} className="App-logo" alt="logo" />
+        <div className="contact">
+          <p>123-456-7890</p>
+          <a
+            href="info@metapercept.com"
+            style={{ textDecoration: "none", color: "#333333" }}
+          >
+            info@metapercept.com
           </a>
-          <a href="/">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="/">
-            <i className="fab fa-google"></i>
-          </a>
-        </div>
-        <div className="copyright">
-          Copyright © 2024 Metapercept Technology Services LLP All Rights
-          Reserved
+          <p>
+            {" "}
+            Copyright © 2024 Metapercept Technology Services LLP All Rights
+            Reserved
+          </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
