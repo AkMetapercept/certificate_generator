@@ -1,6 +1,6 @@
 const express = require("express");
 const User = require("./model/userDetail");
-const certificate = require("./model/certificate");
+const certificate = require("./model/certificateDetails");
 const Db=require("./db")
 const cors = require("cors");
 const dotenv=require("dotenv")
