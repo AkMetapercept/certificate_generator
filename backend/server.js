@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("./model/userDetail");
+const certificate = require("./model/certificate");
 const Db=require("./db")
 const cors = require("cors");
 const dotenv=require("dotenv")
@@ -35,7 +36,16 @@ app.post('/register', (req, res) => {
         .catch(err => res.status(500).json({ status: "error", message: err.message }));
 });
 
-
+app.post('/addCertificateData', (req, res) => {
+    certificate.create(req.body)
+        .then(user => res.json({ status: "success", user }))
+        .catch(err => res.status(500).json({ status: "error", message: err.message }));
+});
+app.get('/getCertificateData', (req, res) => {
+    certificate.find()
+        .then(user => res.json({ status: "success", user }))
+        .catch(err => res.status(500).json({ status: "error", message: err.message }));
+});
 const port=process.env.PORT ||3000
 
 app.listen(port, () => {
